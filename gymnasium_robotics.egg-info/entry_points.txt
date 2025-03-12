@@ -1,0 +1,2 @@
+[gymnasium.envs]
+__root__ = gymnasium_robotics.__init__:register_robotics_envs

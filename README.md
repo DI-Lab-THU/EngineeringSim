@@ -35,12 +35,10 @@ We support and test for Linux and macOS. We will accept PRs related to Windows, 
 
 * Multi Agent Path Planning - Multiple agents find the paths to fetch the corresponding targets.
 
-<video width="640" height="480" controls>
-  <source src="./videos/multiagent.mp4" type="video/mp4">
-</video>
-<video width="640" height="480" controls>
-  <source src="./videos/multiagent_new.mp4" type="video/mp4">
-</video>
+[Watch multiagent.mp4](./videos/multiagent.mp4)
+
+[Watch multiagent_new.mp4](./videos/multiagent_new.mp4)
+
 
 * Single Agent Obstacle Avoidance - An agent finds the path to fetch the target and avoid the obstacle.
 

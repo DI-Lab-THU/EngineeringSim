@@ -4,9 +4,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 
-<p align="center">
-  <a href = "https://robotics.farama.org/" target = "_blank"> <img src="/engineering-sim.webp" width="500px"/> </a>
-</p>
+![Image 1](logo.jpg)
 
 This library contains a collection of Reinforcement Learning in Engineering Simulation environments that use the [Gymnasium](https://gymnasium.farama.org/) and [Gymnasium Robotics](https://robotics.farama.org/) API. The environments run with the [MuJoCo](https://mujoco.org/) physics engine and the maintained [mujoco python bindings](https://mujoco.readthedocs.io/en/latest/python.html).
 
@@ -26,39 +24,25 @@ We support and test for Linux and macOS. We will accept PRs related to Windows, 
 
 * Single Agent Path Planning - An agent finds the path to fetch the target.
 
-<video width="640" height="480" controls>
-  <source src="./videos/singleagent.mp4" type="video/mp4">
-</video>
-<video width="640" height="480" controls>
-   <source src="./videos/singleagent_new.mp4" type="video/mp4">
-</video>
-
 * Multi Agent Path Planning - Multiple agents find the paths to fetch the corresponding targets.
-
-<video width="640" height="480" controls>
-  <source src="./videos/multiagent.mp4" type="video/mp4">
-</video>
-<video width="640" height="480" controls>
-  <source src="./videos/multiagent_new.mp4" type="video/mp4">
-</video>
 
 * Single Agent Obstacle Avoidance - An agent finds the path to fetch the target and avoid the obstacle.
 
-<video width="640" height="480" controls>
-  <source src="./videos/barrier_color.mp4" type="video/mp4">
-</video>
-<video width="640" height="480" controls>
-  <source src="./videos/barrier_color_new.mp4" type="video/mp4">
-</video>
-
 * Multi Agent Obstacle Avoidance -  Multiple agents find the paths to fetch the corresponding targets and avoid the obstacles.
 
-<video width="640" height="480" controls>
-  <source src="./videos/multiagent_barrier_color.mp4" type="video/mp4">
-</video>
-<video width="640" height="480" controls>
-  <source src="./videos/multiagent_barrier_color_new.mp4" type="video/mp4">
-</video>
+* Single Agent RobotArm
+
+* Multi Agent RobotArm
+
+|Environment|              Vertical View          |           Oblique Drawing               |
+|:---:|:-------------------------:|:-------------------------:|
+|Single Agent Path Planning| ![Image 1](./videos/singleagent.gif) | ![Image 2](./videos/singleagent_new.gif) |
+|Multi Agent Path Planning| ![Image 1](./videos/multiagent.gif) | ![Image 2](./videos/multiagent_new.gif) |
+|Single Agent Obstacle Avoidance| ![Image 1](./videos/barrier_color.gif) | ![Image 2](./videos/barrier_color_new.gif) |
+|Multi Agent Obstacle Avoidance| ![Image 1](./videos/multiagent_barrier_color.gif) | ![Image 2](./videos/multiagent_barrier_color_new.gif) |
+|Single Agent RobotArm| ![Image 1](./videos/singleagent_roboarm.gif) | ![Image 2](./videos/singleagent_roboarm_new.gif) |
+|Multi Agent RobotArm| ![Image 1](./videos/multiagent_roboarm.gif) | ![Image 2](./videos/multiagent_roboarm_new.gif) |
+
 
 The dataset for Offline Reinforcement Learning will be released later!
 
@@ -86,6 +70,8 @@ env = gym.make("PointMaze_PATHPLANNING_MAP1Dense-v3")
 #env = gym.make('PointMaze_MA_PATHPLANNING_MAP1Dense-v3')
 #env = gym.make('PointMaze_BARRIER_PATHPLANNING_MAP1Dense-v3')
 #env = gym.make('PointMaze_MA_BARRIER_PATHPLANNING_MAP1Dense-v3')
+#env = gym.make("RobotsArmEngSim-v3", render_mode="rgb_array")
+#env = gym.make("MultiRobotsArmEngSim-v3", render_mode="rgb_array")
 env.reset()
 obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
 

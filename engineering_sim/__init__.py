@@ -5,7 +5,7 @@ from gymnasium_robotics.core import GoalEnv
 from gymnasium_robotics.envs.maze import maps
 from gymnasium_robotics.envs.multiagent_mujoco import mamujoco_v1
 
-__version__ = "1.3.1"
+__version__ = "0.0.1"
 
 
 def register_robotics_envs():
@@ -30,7 +30,7 @@ def register_robotics_envs():
         )
 
         register(
-            id=f"FetchSlide{suffix}-v4",
+            id=f"FetchSlide{suffix}-v3",
             entry_point="gymnasium_robotics.envs.fetch.slide:MujocoFetchSlideEnv",
             kwargs=kwargs,
             max_episode_steps=50,
@@ -44,8 +44,15 @@ def register_robotics_envs():
         )
 
         register(
-            id=f"FetchPickAndPlace{suffix}-v4",
+            id=f"FetchPickAndPlace{suffix}-v3",
             entry_point="gymnasium_robotics.envs.fetch.pick_and_place:MujocoFetchPickAndPlaceEnv",
+            kwargs=kwargs,
+            max_episode_steps=50,
+        )
+        
+        register(
+            id=f"RobotArmEngSim{suffix}-v3",
+            entry_point="gymnasium_robotics.envs.fetch.roboarm_engsim:RobotArmEngSimEnv",
             kwargs=kwargs,
             max_episode_steps=50,
         )
@@ -58,8 +65,36 @@ def register_robotics_envs():
         )
 
         register(
-            id=f"FetchReach{suffix}-v4",
+            id=f"FetchReach{suffix}-v3",
             entry_point="gymnasium_robotics.envs.fetch.reach:MujocoFetchReachEnv",
+            kwargs=kwargs,
+            max_episode_steps=50,
+        )
+        
+        register(
+            id=f"RobotsArmEngSim{suffix}-v3",
+            entry_point="gymnasium_robotics.envs.fetch.robotsarm_engsim:RobotsArmEngSimEnv",
+            kwargs=kwargs,
+            max_episode_steps=50,
+        )
+        
+        register(
+            id=f"RobotsArmEngSim{suffix}-v4",
+            entry_point="gymnasium_robotics.envs.fetch.robotsarm_engsim_new:RobotsArmEngSimEnv",
+            kwargs=kwargs,
+            max_episode_steps=50,
+        )
+        
+        register(
+            id=f"MultiRobotsArmEngSim{suffix}-v3",
+            entry_point="gymnasium_robotics.envs.fetch.multi_robotsarm_engsim:MultiRobotsArmEngSimEnv",
+            kwargs=kwargs,
+            max_episode_steps=50,
+        )
+        
+        register(
+            id=f"MultiRobotsArmEngSim{suffix}-v4",
+            entry_point="gymnasium_robotics.envs.fetch.multi_robotsarm_engsim_new:MultiRobotsArmEngSimEnv",
             kwargs=kwargs,
             max_episode_steps=50,
         )
@@ -72,7 +107,7 @@ def register_robotics_envs():
         )
 
         register(
-            id=f"FetchPush{suffix}-v4",
+            id=f"FetchPush{suffix}-v3",
             entry_point="gymnasium_robotics.envs.fetch.push:MujocoFetchPushEnv",
             kwargs=kwargs,
             max_episode_steps=50,
@@ -87,7 +122,7 @@ def register_robotics_envs():
         )
 
         register(
-            id=f"HandReach{suffix}-v3",
+            id=f"HandReach{suffix}-v2",
             entry_point="gymnasium_robotics.envs.shadow_dexterous_hand.reach:MujocoHandReachEnv",
             kwargs=kwargs,
             max_episode_steps=50,
@@ -1072,297 +1107,6 @@ def register_robotics_envs():
             kwargs=_merge(
                 {
                     "maze_map": maps.LARGE_MAZE_DIVERSE_GR,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_PATHPLANNING_MAP1{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.PATH_PLANNING_FIG1,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_PATHPLANNING_MAP2{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.PATH_PLANNING_FIG2,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_PATHPLANNING_MAP3{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.PATH_PLANNING_FIG3,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        register(
-            id=f"PointMaze_PATHPLANNING_MAP4{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.PATH_PLANNING_FIG4,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_PATHPLANNING_MAP5{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.PATH_PLANNING_FIG5,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_PATHPLANNING_MAP6{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.PATH_PLANNING_FIG6,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_PATHPLANNING_MAP1{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_PATH_PLANNING_FIG1,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_PATHPLANNING_MAP2{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_PATH_PLANNING_FIG2,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_PATHPLANNING_MAP3{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_PATH_PLANNING_FIG3,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_PATHPLANNING_MAP4{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_PATH_PLANNING_FIG4,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_PATHPLANNING_MAP5{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_PATH_PLANNING_FIG5,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_PATHPLANNING_MAP6{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_PATH_PLANNING_FIG6,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        
-        
-        register(
-            id=f"PointMaze_BARRIER_PATHPLANNING_MAP1{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.BARRIER_PATH_PLANNING_FIG1,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_BARRIER_PATHPLANNING_MAP2{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.BARRIER_PATH_PLANNING_FIG2,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_BARRIER_PATHPLANNING_MAP3{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.BARRIER_PATH_PLANNING_FIG3,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_BARRIER_PATHPLANNING_MAP4{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.BARRIER_PATH_PLANNING_FIG4,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_BARRIER_PATHPLANNING_MAP5{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.BARRIER_PATH_PLANNING_FIG5,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_BARRIER_PATHPLANNING_MAP6{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.BARRIER_PATH_PLANNING_FIG6,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        
-        
-        register(
-            id=f"PointMaze_MA_BARRIER_PATHPLANNING_MAP1{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_BARRIER_PATH_PLANNING_FIG1,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_BARRIER_PATHPLANNING_MAP2{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_BARRIER_PATH_PLANNING_FIG2,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_BARRIER_PATHPLANNING_MAP3{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_BARRIER_PATH_PLANNING_FIG3,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_BARRIER_PATHPLANNING_MAP4{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_BARRIER_PATH_PLANNING_FIG4,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_BARRIER_PATHPLANNING_MAP5{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_BARRIER_PATH_PLANNING_FIG5,
-                },
-                kwargs,
-            ),
-            max_episode_steps=800,
-        )
-        
-        register(
-            id=f"PointMaze_MA_BARRIER_PATHPLANNING_MAP6{suffix}-v3",
-            entry_point="gymnasium_robotics.envs.maze.multiagent_barrier_point_maze:PointMazeEnv",
-            kwargs=_merge(
-                {
-                    "maze_map": maps.MA_BARRIER_PATH_PLANNING_FIG6,
                 },
                 kwargs,
             ),

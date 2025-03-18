@@ -8,8 +8,8 @@ CWD = pathlib.Path(__file__).absolute().parent
 
 
 def get_version():
-    """Gets the gymnasium robotics version."""
-    path = CWD / "gymnasium_robotics" / "__init__.py"
+    """Gets the engineering simulator version."""
+    path = CWD / "engineering_sim" / "__init__.py"
     content = path.read_text()
 
     for line in content.splitlines():
@@ -34,7 +34,7 @@ def get_description():
 
 
 setup(
-    name="gymnasium-robotics",
+    name="engineering-simulator",
     version=get_version(),
     long_description=get_description(),
     long_description_content_type="text/markdown",

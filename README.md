@@ -1,5 +1,4 @@
-[![Python](https://img.shields.io/pypi/pyversions/gymnasium-robotics.svg)](https://badge.fury.io/py/gymnasium-robotics)
-[![PyPI](https://badge.fury.io/py/gymnasium-robotics.svg)](https://badge.fury.io/py/gymnasium-robotics)
+
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -70,8 +69,8 @@ env = gym.make("PointMaze_PATHPLANNING_MAP1Dense-v3")
 #env = gym.make('PointMaze_MA_PATHPLANNING_MAP1Dense-v3')
 #env = gym.make('PointMaze_BARRIER_PATHPLANNING_MAP1Dense-v3')
 #env = gym.make('PointMaze_MA_BARRIER_PATHPLANNING_MAP1Dense-v3')
-#env = gym.make("RobotsArmEngSim-v3", render_mode="rgb_array")
-#env = gym.make("MultiRobotsArmEngSim-v3", render_mode="rgb_array")
+#env = gym.make("RobotsArmEngSim-v4", render_mode="rgb_array")
+#env = gym.make("MultiRobotsArmEngSim-v4", render_mode="rgb_array")
 env.reset()
 obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
 

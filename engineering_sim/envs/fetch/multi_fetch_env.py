@@ -98,8 +98,8 @@ def get_base_fetch_env(RobotEnvClass: Union[MujocoPyRobotEnv, MujocoRobotEnv]):
             actions = []
             
             for i in range(self.num_agents):
-                pos_ctrl, gripper_ctrl = action[4*i:4*i+3], action[4*i+3]
-            
+                
+                pos_ctrl, gripper_ctrl = action[7*i:7*i+3], action[7*i+3]
 
                 pos_ctrl *= 0.05  # limit maximum change in position
                 rot_ctrl = [
@@ -112,8 +112,8 @@ def get_base_fetch_env(RobotEnvClass: Union[MujocoPyRobotEnv, MujocoRobotEnv]):
                 assert gripper_ctrl.shape == (2,)
                 if self.block_gripper:
                     gripper_ctrl = np.zeros_like(gripper_ctrl)
-                action = np.concatenate([pos_ctrl, rot_ctrl, gripper_ctrl])
-                actions.append(action)
+                action_agent = np.concatenate([pos_ctrl, rot_ctrl, gripper_ctrl])
+                actions.append(action_agent)
                 
             ''' pos_ctrl, gripper_ctrl = action[:3], action[3]
             

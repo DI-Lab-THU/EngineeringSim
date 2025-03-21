@@ -73,7 +73,7 @@ def get_base_fetch_env(RobotEnvClass: Union[MujocoPyRobotEnv, MujocoRobotEnv]):
             self.reward_type = reward_type
             self.num_agents = 2
 
-            super().__init__(n_actions=4*self.num_agents, **kwargs)
+            super().__init__(n_actions=7*self.num_agents, **kwargs)
 
         # GoalEnv methods
         # ----------------------------
@@ -90,7 +90,7 @@ def get_base_fetch_env(RobotEnvClass: Union[MujocoPyRobotEnv, MujocoRobotEnv]):
         # ----------------------------
 
         def _set_action(self, action):
-            assert action.shape == (4*self.num_agents,)
+            assert action.shape == (7*self.num_agents,)
             action = (
                 action.copy()
             )  # ensure that we don't change the action outside of this scope

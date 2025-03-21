@@ -35,10 +35,10 @@ We support and test for Linux and macOS. We will accept PRs related to Windows, 
 
 |Environment|              Vertical View          |           Oblique Drawing               |
 |:---:|:-------------------------:|:-------------------------:|
-|Single Agent Path Planning| ![Image 1](./videos/singleagent.gif) | ![Image 2](./videos/singleagent_new.gif) |
-|Multi Agent Path Planning| ![Image 1](./videos/multiagent.gif) | ![Image 2](./videos/multiagent_new.gif) |
-|Single Agent Obstacle Avoidance| ![Image 1](./videos/barrier_color.gif) | ![Image 2](./videos/barrier_color_new.gif) |
-|Multi Agent Obstacle Avoidance| ![Image 1](./videos/multiagent_barrier_color.gif) | ![Image 2](./videos/multiagent_barrier_color_new.gif) |
+|Single Agent Path Planning| ![Image 1](./videos/singleagent_nobarrier.gif) | ![Image 2](./videos/singleagent_nobarrier_new.gif) |
+|Multi Agent Path Planning| ![Image 1](./videos/multiagent_nobarrier.gif) | ![Image 2](./videos/multiagent_nobarrier_new.gif) |
+|Single Agent Obstacle Avoidance| ![Image 1](./videos/singleagent_barrier.gif) | ![Image 2](./videos/singleagent_barrier_new.gif) |
+|Multi Agent Obstacle Avoidance| ![Image 1](./videos/multiagent_barrier.gif) | ![Image 2](./videos/multiagent_barrier_new.gif) |
 |Single Agent RobotArm| ![Image 1](./videos/singleagent_roboarm.gif) | ![Image 2](./videos/singleagent_roboarm_new.gif) |
 |Multi Agent RobotArm| ![Image 1](./videos/multiagent_roboarm.gif) | ![Image 2](./videos/multiagent_roboarm_new.gif) |
 

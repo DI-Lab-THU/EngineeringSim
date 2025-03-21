@@ -66,7 +66,7 @@ def get_base_fetch_env(RobotEnvClass: Union[MujocoPyRobotEnv, MujocoRobotEnv]):
             self.distance_threshold = distance_threshold
             self.reward_type = reward_type
 
-            super().__init__(n_actions=4, **kwargs)
+            super().__init__(n_actions=7, **kwargs)
 
         # GoalEnv methods
         # ----------------------------
@@ -83,7 +83,7 @@ def get_base_fetch_env(RobotEnvClass: Union[MujocoPyRobotEnv, MujocoRobotEnv]):
         # ----------------------------
 
         def _set_action(self, action):
-            assert action.shape == (4,)
+            assert action.shape == (7,)
             action = (
                 action.copy()
             )  # ensure that we don't change the action outside of this scope

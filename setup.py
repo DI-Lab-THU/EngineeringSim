@@ -2,7 +2,7 @@
 
 import pathlib
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 CWD = pathlib.Path(__file__).absolute().parent
 
@@ -38,4 +38,5 @@ setup(
     version=get_version(),
     long_description=get_description(),
     long_description_content_type="text/markdown",
+    packages=find_packages(include=["engineering_sim"]),
 )

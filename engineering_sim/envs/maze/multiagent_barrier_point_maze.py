@@ -18,11 +18,11 @@ import numpy as np
 from gymnasium import spaces
 from gymnasium.utils.ezpickle import EzPickle
 
-# from gymnasium_robotics.envs.point_maze.point_env import PointEnv
-from gymnasium_robotics.envs.maze.maps import U_MAZE
-from gymnasium_robotics.envs.maze.multiagent_barrier_maze_v4 import MultiagentBarrierMazeEnv
-from gymnasium_robotics.envs.maze.point import PointEnv
-from gymnasium_robotics.utils.mujoco_utils import MujocoModelNames
+# from engineering_sim.envs.point_maze.point_env import PointEnv
+from engineering_sim.envs.maze.maps import U_MAZE
+from engineering_sim.envs.maze.multiagent_barrier_maze_v4 import MultiagentBarrierMazeEnv
+from engineering_sim.envs.maze.point import PointEnv
+from engineering_sim.utils.mujoco_utils import MujocoModelNames
 
 
 class PointMazeEnv(MultiagentBarrierMazeEnv, EzPickle):
@@ -196,9 +196,9 @@ class PointMazeEnv(MultiagentBarrierMazeEnv, EzPickle):
 
     ```python
     import gymnasium as gym
-    import gymnasium_robotics
+    import engineering_sim
 
-    gym.register_envs(gymnasium_robotics)
+    gym.register_envs(engineering_sim)
 
     example_map = [[1, 1, 1, 1, 1],
            [1, C, 0, C, 1],
@@ -256,9 +256,9 @@ class PointMazeEnv(MultiagentBarrierMazeEnv, EzPickle):
 
     ```python
     import gymnasium as gym
-    import gymnasium_robotics
+    import engineering_sim
 
-    gym.register_envs(gymnasium_robotics)
+    gym.register_envs(engineering_sim)
 
     env = gym.make('PointMaze_UMazeDense-v3')
     ```
@@ -292,9 +292,9 @@ class PointMazeEnv(MultiagentBarrierMazeEnv, EzPickle):
 
     ```python
     import gymnasium as gym
-    import gymnasium_robotics
+    import engineering_sim
 
-    gym.register_envs(gymnasium_robotics)
+    gym.register_envs(engineering_sim)
 
     env = gym.make('PointMaze_UMaze-v3', max_episode_steps=100)
     ```

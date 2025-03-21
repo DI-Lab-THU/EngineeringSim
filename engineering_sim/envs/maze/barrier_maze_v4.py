@@ -20,8 +20,8 @@ from typing import Dict, List, Optional, Union
 
 import numpy as np
 
-from gymnasium_robotics.core import GoalEnv
-from gymnasium_robotics.envs.maze.maps import COMBINED, GOAL, RESET, BARRIER, U_MAZE
+from engineering_sim.core import GoalEnv
+from engineering_sim.envs.maze.maps import COMBINED, GOAL, RESET, BARRIER, U_MAZE
 
 
 class Maze:

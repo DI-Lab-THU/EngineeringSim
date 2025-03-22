@@ -389,8 +389,8 @@ class MultiagentMazeEnv(GoalEnv):
             )
             * self.maze.maze_size_scaling
         )
-        xy_pos[0] += noise_x
-        xy_pos[1] += noise_y
+        xy_pos[0] += 0.0
+        xy_pos[1] += 0.0
 
         return xy_pos
 

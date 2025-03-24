@@ -78,6 +78,7 @@ obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
 
 ## Project Maintainers
 Main Contributors: [Zhuoran Li](https://scholar.google.com.hk/citations?user=j948XtQAAAAJ&hl=zh-CN)
+
 Guidance: Professor [Longbo Huang](https://iiis.tsinghua.edu.cn/~huang)
 
 

@@ -29,67 +29,56 @@ We support and test for Linux and macOS. We will accept PRs related to Windows, 
 
 * Multi Agent Obstacle Avoidance -  Multiple agents find the paths to fetch the corresponding targets and avoid the obstacles.
 
-* Single Agent RobotArm
+* Single Agent RobotArm - An agent flattens the cement by vibration.
 
-* Multi Agent RobotArm
+* Multi Agent RobotArm - Multiple agents flatten the cement by vibration.
 
 |Environment|              Vertical View          |           Oblique Drawing               |
 |:---:|:-------------------------:|:-------------------------:|
-|Single Agent Path Planning| ![Image 1](./videos/singleagent_nobarrier.gif) | ![Image 2](./videos/singleagent_nobarrier_new.gif) |
+|Single Agent Path Planning | ![Image 1](./videos/singleagent_nobarrier.gif) | ![Image 2](./videos/singleagent_nobarrier_new.gif) |
 |Multi Agent Path Planning| ![Image 1](./videos/multiagent_nobarrier.gif) | ![Image 2](./videos/multiagent_nobarrier_new.gif) |
 |Single Agent Obstacle Avoidance| ![Image 1](./videos/singleagent_barrier.gif) | ![Image 2](./videos/singleagent_barrier_new.gif) |
 |Multi Agent Obstacle Avoidance| ![Image 1](./videos/multiagent_barrier.gif) | ![Image 2](./videos/multiagent_barrier_new.gif) |
 |Single Agent RobotArm| ![Image 1](./videos/singleagent_roboarm.gif) | ![Image 2](./videos/singleagent_roboarm_new.gif) |
 |Multi Agent RobotArm| ![Image 1](./videos/multiagent_roboarm.gif) | ![Image 2](./videos/multiagent_roboarm_new.gif) |
 
+The offline datasets are listed as below (Others will be coming soon!).
+|Environment|Data Type|Download Link|
+|:---:|:-------------------------:|:-------------------------:|
+|Single Agent Path Planning|Random|https://cloud.tsinghua.edu.cn/d/a45bb47294154288a351/|
+|Multi Agent Path Planning|Random|https://cloud.tsinghua.edu.cn/d/860404761ba84c8185ba/|
+|Single Agent Obstacle Avoidance|Random|https://cloud.tsinghua.edu.cn/d/f438681b273743119736/|
+|Multi Agent Obstacle Avoidance|Random|https://cloud.tsinghua.edu.cn/d/30b121e9caa4452f83d7/|
+|Single Agent RobotArm|Random|https://cloud.tsinghua.edu.cn/d/dacde3bd82c04f9ea246/|
+|Multi Agent RobotArm|Random|https://cloud.tsinghua.edu.cn/d/0a1720bb268342dab3c9/|
 
-The dataset for Offline Reinforcement Learning will be released later!
 
+## Usage Instruction
 
-## Multi-goal API
-
-The robotic environments use an extension of the core Gymnasium API by inheriting from [GoalEnv](https://robotics.farama.org/content/multi-goal_api/) class. The new API forces the environments to have a dictionary observation space that contains 3 keys:
-
-* `observation` - The actual observation of the environment
-* `desired_goal` - The goal that the agent has to achieved
-* `achieved_goal` - The goal that the agent has currently achieved instead. The objective of the environments is for this value to be close to `desired_goal`
-* `barrier_goal` (Optional) - The barrier position
-
-This API also exposes the function of the reward, as well as the terminated and truncated signals to re-compute their values with different goals. This functionality is useful for algorithms that use Hindsight Experience Replay (HER).
-
-The following example demonstrates how the exposed reward, terminated, and truncated functions
-can be used to re-compute the values with substituted goals. The info dictionary can be used to store
-additional information that may be necessary to re-compute the reward, but that is independent of the
-goal, e.g. state derived from the simulation.
+These instructions describe how to load the engineering simulator environment, create tasks, interact with the environment, and other operations.
 
 ```python
 import gymnasium as gym
+import engineering_sim
+gym.register_envs(engineering_sim) 
+#environment registeration
 
 env = gym.make("PointMaze_PATHPLANNING_MAP1Dense-v3") 
 #env = gym.make('PointMaze_MA_PATHPLANNING_MAP1Dense-v3')
 #env = gym.make('PointMaze_BARRIER_PATHPLANNING_MAP1Dense-v3')
 #env = gym.make('PointMaze_MA_BARRIER_PATHPLANNING_MAP1Dense-v3')
-#env = gym.make("RobotsArmEngSim-v4", render_mode="rgb_array")
-#env = gym.make("MultiRobotsArmEngSim-v4", render_mode="rgb_array")
+#env = gym.make("RobotsArmEngSim-v4")
+#env = gym.make("MultiRobotsArmEngSim-v4") 
+#environment generation
+
 env.reset()
 obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
-
-# The following always has to hold:
-assert reward == env.compute_reward(obs["achieved_goal"], obs["desired_goal"], info)
-assert truncated == env.compute_truncated(obs["achieved_goal"], obs["desired_goal"], info)
-assert terminated == env.compute_terminated(obs["achieved_goal"], obs["desired_goal"], info)
-
-# However goals can also be substituted:
-substitute_goal = obs["achieved_goal"].copy()
-substitute_reward = env.compute_reward(obs["achieved_goal"], substitute_goal, info)
-substitute_terminated = env.compute_terminated(obs["achieved_goal"], substitute_goal, info)
-substitute_truncated = env.compute_truncated(obs["achieved_goal"], substitute_goal, info)
+#environment interaction
 ```
-
-The `GoalEnv` class can also be used for custom environments.
 
 ## Project Maintainers
 Main Contributors: [Zhuoran Li](https://scholar.google.com.hk/citations?user=j948XtQAAAAJ&hl=zh-CN)
+Guidance: Professor [Longbo Huang](https://iiis.tsinghua.edu.cn/~huang)
 
 
 ## Citation
@@ -97,7 +86,7 @@ Main Contributors: [Zhuoran Li](https://scholar.google.com.hk/citations?user=j94
 If you use this in your research, please cite:
 ```
 @software{engineering_sim2025github,
-  author = {Zhuoran Li},
+  author = {Zhuoran Li, Longbo Huang},
   title = {Engineering Sim},
   version = {0.0.1},
   year = {2025},
